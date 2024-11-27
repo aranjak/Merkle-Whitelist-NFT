@@ -1,66 +1,14 @@
-## Foundry
+# MerkleWhitelistNFT Contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This is a Solidity smart contract for a Merkle Tree-based whitelist NFT minting system. It allows users to mint NFTs at different prices based on whether they are on a whitelist (controlled by a Merkle Tree) or not. The contract also supports royalties via IERC2981 and includes functionality for contract and token metadata URIs.
 
-Foundry consists of:
+## Overview
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+The `MerkleWhitelistNFT` contract is an ERC-721 based NFT implementation with the following features:
 
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+- **Merkle Tree-based Whitelist**: Users can mint NFTs at a discounted price if they are part of the whitelist, verified using a Merkle Tree.
+- **Public Minting**: Users who are not whitelisted can still mint NFTs at a higher public price.
+- **Royalty Support**: The contract implements IERC2981 to ensure royalties are distributed on secondary sales.
+- **Metadata Support**: Customizable contract URI and token URI for NFTs.
+- **Owner Withdrawal**: The contract owner can withdraw funds collected from minting.
+- **Royalties**: Supports royalty payments when NFTs are sold on secondary markets.
