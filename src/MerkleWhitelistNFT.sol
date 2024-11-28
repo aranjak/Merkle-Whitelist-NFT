@@ -146,7 +146,7 @@ contract MerkleWhitelistNFT is ERC721Enumerable, Ownable, IERC2981 {
     {
         require(_ownerOf(tokenId) != address(0), "URI query for nonexistent token");
 
-        string memory currentBaseURI = _baseURI();
+        string memory currentBaseURI = s_baseTokenURI;
         return
             bytes(currentBaseURI).length > 0
                 ? string(abi.encodePacked(currentBaseURI, tokenId.toString(), s_baseExtension))

@@ -12,3 +12,17 @@ The `MerkleWhitelistNFT` contract is an ERC-721 based NFT implementation with th
 - **Metadata Support**: Customizable contract URI and token URI for NFTs.
 - **Owner Withdrawal**: The contract owner can withdraw funds collected from minting.
 - **Royalties**: Supports royalty payments when NFTs are sold on secondary markets.
+
+## Installation
+
+To use or deploy this contract, you'll need the following tools:
+
+1. **Foundry**: The contract is developed using Foundry, a fast and efficient Ethereum development framework.
+   
+   Follow these steps to use Foundry:
+
+   curl -L https://foundry.paradigm.xyz | bash
+   foundryup
+   forge install
+   forge build
+   forge test
