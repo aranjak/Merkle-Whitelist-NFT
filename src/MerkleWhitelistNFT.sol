@@ -137,20 +137,13 @@ contract MerkleWhitelistNFT is ERC721Enumerable, Ownable, IERC2981 {
      * @return string The full metadata URI for the token.
      * @dev Throws if the token does not exist.
      */
-    function tokenURI(uint256 tokenId)
-        public
-        view
-        virtual
-        override
-        returns (string memory)
-    {
+    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
         require(_ownerOf(tokenId) != address(0), "URI query for nonexistent token");
 
         string memory currentBaseURI = s_baseTokenURI;
-        return
-            bytes(currentBaseURI).length > 0
-                ? string(abi.encodePacked(currentBaseURI, tokenId.toString(), s_baseExtension))
-                : "";
+        return bytes(currentBaseURI).length > 0
+            ? string(abi.encodePacked(currentBaseURI, tokenId.toString(), s_baseExtension))
+            : "";
     }
 
     /**
@@ -160,7 +153,7 @@ contract MerkleWhitelistNFT is ERC721Enumerable, Ownable, IERC2981 {
      * @return receiver The address receiving royalties.
      * @return royaltyAmount The amount of royalties to be paid.
      */
-    function royaltyInfo(uint256 /*_tokenId*/, uint256 _salePrice)
+    function royaltyInfo(uint256, uint256 _salePrice)
         external
         view
         override
@@ -200,12 +193,7 @@ contract MerkleWhitelistNFT is ERC721Enumerable, Ownable, IERC2981 {
         bytes32 _metadata
     ) external returns (bytes4) {
         emit RoyaltiesReceived(_royaltyRecipient, _buyer, _tokenId, _tokenPaid, _amount, _metadata);
-        return
-            bytes4(
-                keccak256(
-                    "onRoyaltiesReceived(address,address,uint256,address,uint256,bytes32)"
-                )
-            );
+        return bytes4(keccak256("onRoyaltiesReceived(address,address,uint256,address,uint256,bytes32)"));
     }
 
     /**
@@ -213,7 +201,13 @@ contract MerkleWhitelistNFT is ERC721Enumerable, Ownable, IERC2981 {
      * @param interfaceId The interface identifier.
      * @return bool True if the interface is supported, false otherwise.
      */
-    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721Enumerable, IERC165) returns (bool) {
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        virtual
+        override(ERC721Enumerable, IERC165)
+        returns (bool)
+    {
         return interfaceId == type(IERC2981).interfaceId || super.supportsInterface(interfaceId);
     }
 }

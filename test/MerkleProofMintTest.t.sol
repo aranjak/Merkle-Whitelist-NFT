@@ -51,14 +51,8 @@ contract MerkleWhitelistNFTTest is Test {
 
         vm.prank(whitelist[0]); // Deploy by address(0x456)
         // Deploy the contract
-        nftContract = new MerkleWhitelistNFT(
-            merkleRoot,
-            royaltyFee,
-            whitelistPrice,
-            publicPrice,
-            contractURI,
-            baseTokenURI
-        );
+        nftContract =
+            new MerkleWhitelistNFT(merkleRoot, royaltyFee, whitelistPrice, publicPrice, contractURI, baseTokenURI);
     }
 
     function testTotalSupplyAfterDeployment() public view {
@@ -70,7 +64,7 @@ contract MerkleWhitelistNFTTest is Test {
     function testIsWhitelisted() public view {
         // Get proof
         bytes32[] memory proof = merkle.getProof(s_leaves, 5);
-        // Execute isWhitelisted 
+        // Execute isWhitelisted
         bool result = nftContract.isWhitelisted(whitelist[5], proof);
         // Assert whitelisted
         assertTrue(result, "Address should be whitelisted");
@@ -258,7 +252,8 @@ contract MerkleWhitelistNFTTest is Test {
         bytes4 result = nftContract.onRoyaltiesReceived(royaltyRecipient, buyer, tokenId, tokenPaid, amount, metadata);
 
         // Check if the return value matches the expected function selector
-        bytes4 expectedSelector = bytes4(keccak256("onRoyaltiesReceived(address,address,uint256,address,uint256,bytes32)"));
+        bytes4 expectedSelector =
+            bytes4(keccak256("onRoyaltiesReceived(address,address,uint256,address,uint256,bytes32)"));
         assertEq(result, expectedSelector, "Returned function selector should match the expected value.");
     }
 
