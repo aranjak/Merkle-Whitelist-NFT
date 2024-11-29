@@ -13,16 +13,55 @@ The `MerkleWhitelistNFT` contract is an ERC-721 based NFT implementation with th
 - **Owner Withdrawal**: The contract owner can withdraw funds collected from minting.
 - **Royalties**: Supports royalty payments when NFTs are sold on secondary markets.
 
-## Installation
+### 1. Installation
 
 To use or deploy this contract, you'll need the following tools:
-
-1. **Foundry**: The contract is developed using Foundry, a fast and efficient Ethereum development framework.
+**Foundry**: fast and efficient Ethereum development framework.
    
-   Follow these steps to use Foundry:
+Follow these steps to use Foundry:
+```bash
+curl -L https://foundry.paradigm.xyz | bash
+foundryup
+```
 
-   curl -L https://foundry.paradigm.xyz | bash
-   foundryup
-   forge install
-   forge build
-   forge test
+### 2. Clone the Repository
+Clone this repository to your local machine:
+
+```bash
+git clone <your-repository-url>
+cd <your-repository-folder>
+```
+
+### 3. Install Dependencies
+After navigating to the project folder, install the necessary dependencies:
+
+```bash
+forge install
+```
+
+### 4. Compile the Contract
+To compile the contract, run:
+
+```bash
+forge build
+```
+
+### 5. Run Tests
+To run the tests, execute:
+
+```bash
+forge test
+```
+
+### 6. Coverage
+To check the code coverage, run:
+
+```bash
+forge coverage
+```
+
+### Withdraw Funds
+The owner can withdraw all accumulated funds from the contract using the `withdraw` function.
+
+### Merkle Proof Generation
+For off-chain Merkle Proof generation, you can use libraries like [murky](https://github.com/dmfxyz/murky) or [merkletreejs](https://github.com/miguelmota/merkletreejs).
